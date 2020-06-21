@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const HeaderArea = styled.div`
   background-color: #fff;
-  height: 60px;
+  height: 80px;
   border-bottom: 1px solid #ccc;
 
   .container {
-    max-width: 1000px;
+    max-width: 1040px;
     margin: auto;
     display: flex;
   }
@@ -19,7 +19,7 @@ export const HeaderArea = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
-    height: 60px;
+    height: 80px;
 
     .logo-1,
     .logo-2,
@@ -51,15 +51,20 @@ export const HeaderArea = styled.div`
     ul {
       display: flex;
       align-items: center;
-      height: 40px;
+      height: 60px;
     }
     li {
       margin: 0 20px;
 
-      a {
+      a,
+      button {
+        border: 0;
+        background: none;
         color: #000;
         font-size: 14px;
         text-decorantion: none;
+        cursor: pointer;
+        outline: 0;
 
         &:hover {
           color: #999;

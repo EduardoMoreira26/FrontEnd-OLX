@@ -1,13 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { SearchArea, PageArea } from "./styled";
+import useApi from "../../helpers/OlxApi";
+import { FiSearch } from "react-icons/fi";
+
+import { PageContainer } from "../../components/MainComponents";
 
 const Page = () => {
-  return (
-    <div>
-      <h1>Pagina Inicial</h1>
+  const api = useApi();
 
-      <Link to="/about">Sobre</Link>
-    </div>
+  //DECLARAÇÔES USESTATE
+
+  //FUNÇÔES
+
+  return (
+    <>
+      <SearchArea>
+        <PageContainer>
+          <div className="searchBox">
+            <form method="GET" action="/ads">
+              <input
+                type="text"
+                name="q"
+                placeholder="Estou procurando por..."
+              />
+              <select name="state"></select>
+              <button>
+                <FiSearch />
+              </button>
+            </form>
+          </div>
+          <div className="categoryList"></div>
+        </PageContainer>
+      </SearchArea>
+
+      <PageContainer>
+        <PageArea>...</PageArea>
+      </PageContainer>
+    </>
   );
 };
 
