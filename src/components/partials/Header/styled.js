@@ -38,6 +38,10 @@ export const HeaderArea = styled.div`
     }
   }
 
+  .user-icon {
+    margin-right: 10px;
+  }
+
   nav {
     padding: 10px 0;
 
@@ -67,14 +71,15 @@ export const HeaderArea = styled.div`
         outline: 0;
 
         &:hover {
-          color: #999;
+          color: #6e0ad6;
         }
 
         &.button {
+          font-weight: bold;
           background-color: #ff8100;
-          border-radius: 4px;
+          border-radius: 50px;
           color: #fff;
-          padding: 5px 10px;
+          padding: 10px 35px;
         }
         &.button:hover {
           background-color: #e57706;

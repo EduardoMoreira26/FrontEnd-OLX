@@ -47,7 +47,9 @@ const Header = () => {
               <>
                 <li>
                   <Link to="/signin">
-                    <FiUser />
+                    <span className="user-icon">
+                      <FiUser />
+                    </span>
                     Entrar
                   </Link>
                 </li>
@@ -56,7 +58,7 @@ const Header = () => {
                 </li>
                 <li>
                   <Link to="/signin" className="button">
-                    Inserir anúncio
+                    Anunciar
                   </Link>
                 </li>
               </>
