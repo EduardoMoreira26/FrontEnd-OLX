@@ -23,7 +23,7 @@ export const SearchArea = styled.div`
         border-radius: 5px;
         outline: 0;
         font-size: 15px;
-        color: #000;
+        color: ##4a5055;
         margin-right: 20px;
         font-size: 18px;
       }
@@ -42,7 +42,7 @@ export const SearchArea = styled.div`
         font-size: 20px;
         border: 0;
         border-radius: 2px;
-        color: #000;
+        color: ##4a5055;
         height: 40px;
         padding: 0 20px;
         cursor: pointer;
@@ -75,4 +75,39 @@ export const SearchArea = styled.div`
   }
 `;
 
-export const PageArea = styled.div``;
+export const PageArea = styled.div`
+  h2 {
+    font-size: 20px;
+  }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .aditem {
+      width: 20%;
+    }
+  }
+  .seeAllLink {
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px 0;
+  }
+`;
+
+export const AreaGalery = styled.div`
+  padding: 10px 0;
+  background-color: #f6f6f6;
+
+  h2 {
+    font-size: 20px;
+  }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .aditem {
+      width: 20%;
+    }
+  }
+`;

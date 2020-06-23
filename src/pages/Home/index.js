@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { SearchArea, PageArea } from "./styled";
+import { SearchArea, PageArea, AreaGalery } from "./styled";
 import useApi from "../../helpers/OlxApi";
 import { FiSearch } from "react-icons/fi";
 
 import { PageContainer } from "../../components/MainComponents";
+import AdItem from "../../components/partials/AdItem";
 
 const Page = () => {
   const api = useApi();
@@ -12,7 +13,9 @@ const Page = () => {
   //DECLARAÇÔES USESTATE
   const [stateList, setStateList] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [adList, setAdList] = useState([]);
 
+  //REQUISIÇÂO ESTADOS
   useEffect(() => {
     const getStates = async () => {
       const slist = await api.getStates();
@@ -21,12 +24,25 @@ const Page = () => {
     getStates();
   }, [api]);
 
+  //REQUISICAO CATEGORIAS
   useEffect(() => {
     const getCategories = async () => {
       const cats = await api.getCategories();
       setCategories(cats);
     };
     getCategories();
+  }, [api]);
+
+  //REQUISICAO ANUNCIOS RECENTES
+  useEffect(() => {
+    const getRecentAds = async () => {
+      const json = await api.getAds({
+        sort: "desc",
+        limit: 8,
+      });
+      setAdList(json.ads);
+    };
+    getRecentAds();
   }, [api]);
 
   //FUNÇÔES
@@ -67,8 +83,29 @@ const Page = () => {
       </SearchArea>
 
       <PageContainer>
-        <PageArea>...</PageArea>
+        <PageArea>
+          <h2>Anúncios recentes</h2>
+          <div className="list">
+            {adList.map((i, k) => (
+              <AdItem key={k} data={i} />
+            ))}
+          </div>
+          <Link to="/ads" className="seeAllLink">
+            Ver todos
+          </Link>
+        </PageArea>
       </PageContainer>
+
+      <AreaGalery>
+        <PageContainer>
+          <h2>Galeria Premium</h2>
+          <div className="list">
+            {adList.map((i, k) => (
+              <AdItem key={k} data={i} />
+            ))}
+          </div>
+        </PageContainer>
+      </AreaGalery>
     </>
   );
 };
