@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PageArea, Fake } from "./styled";
 import useApi from "../../helpers/OlxApi";
@@ -10,7 +10,16 @@ const Page = () => {
   const { id } = useParams();
 
   const [loading, setLoading] = useState(true);
-  const [adInfo, setAdInfo] = useState([]);
+  const [adInfo, setAdInfo] = useState({});
+
+  useEffect(() => {
+    const getAdInfo = async (id) => {
+      const json = await api.getAd(id, true);
+      setAdInfo(json);
+      setLoading(false);
+    };
+    getAdInfo(id);
+  }, [api, id]);
 
   //DECLARAÇÔES USESTATE
 
@@ -24,7 +33,11 @@ const Page = () => {
             <div className="adImage">{loading && <Fake height={300} />}</div>
 
             <div className="aInfo">
-              <div className="adName">{loading && <Fake height={20} />}</div>
+              <div className="adName">
+                {loading && <Fake height={20} />}
+                {adInfo.title && <h2>{adInfo.title}</h2>}
+                {adInfo.dateCreated && <small>Criado em ...</small>}
+              </div>
               <div className="adDescription">
                 {loading && <Fake height={100} />}
               </div>
