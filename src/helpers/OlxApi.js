@@ -41,7 +41,7 @@ const apiFetchGet = async (endpoint, body = []) => {
     }
   }
 
-  const res = await fetch(`${BASEAPI + endpoint}?{qs.stringify(body)}`);
+  const res = await fetch(`${BASEAPI + endpoint}?${qs.stringify(body)}`);
   const json = await res.json();
 
   if (json.notallowed) {
