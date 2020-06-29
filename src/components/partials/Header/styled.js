@@ -66,7 +66,7 @@ export const HeaderArea = styled.div`
         background: none;
         color: #000;
         font-size: 14px;
-        text-decorantion: none;
+        text-decoration: none;
         cursor: pointer;
         outline: 0;
 

@@ -14,20 +14,28 @@ export const PageArea = styled.div`
       max-width: 500px;
 
       .area--title {
-        width: 200px;
-        text-align: right;
         padding-right: 20px;
         font-weight: bold;
         font-size: 14px;
+
+        .area-img {
+          display: flex;
+        }
       }
 
       .area--input {
         flex: 1;
 
-        input {
+        .input-img {
+          margin-top: 20px;
+        }
+
+        input,
+        textarea {
+          font-family: "Nunito Sans", sans-serif;
           width: 100%;
-          font-size: 14px;
-          padding: 5px;
+          font-size: 18px;
+          padding: 15px;
           border: 1px solid #ddd;
           border-radius: 3px;
           outline: 0;
@@ -44,17 +52,21 @@ export const PageArea = styled.div`
         }
 
         button {
-          background-color: #0089ff;
           border: 0;
-          outline: 0;
-          padding: 5px 10px;
-          border-radius: 4px;
-          color: #fff;
-          font-size: 15px;
+          background: none;
+          color: #000;
+          font-size: 14px;
+          text-decoration: none;
           cursor: pointer;
+          outline: 0;
+          font-weight: bold;
+          background-color: #ff8100;
+          border-radius: 50px;
+          color: #fff;
+          padding: 15px 60px;
 
           &:hover {
-            background-color: #006fce;
+            background-color: #e57706;
           }
         }
       }

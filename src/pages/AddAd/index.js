@@ -97,13 +97,21 @@ const Page = () => {
             </div>
           </label>
 
-          <label className="area">
-            <div className="area--title">
-              Fotos <br />
-              Adicione até 20 fotos
-            </div>
-            <div className="area--input ">
-              <input type="file" disabled={disabled} ref={fileField} multiple />
+          <label className="area ">
+            <div className="area-img">
+              <div className="area--title">
+                Fotos <br />
+                Adicione até 20 fotos
+              </div>
+              <div className="area--input ">
+                <input
+                  className="input-img"
+                  type="file"
+                  disabled={disabled}
+                  ref={fileField}
+                  multiple
+                />
+              </div>
             </div>
           </label>
 
