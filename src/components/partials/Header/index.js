@@ -29,7 +29,9 @@ const Header = () => {
               <>
                 <li>
                   <Link to="/my-account">
-                    <FiUser />
+                    <span className="user-icon">
+                      <FiUser />
+                    </span>
                     Minha conta
                   </Link>
                 </li>
@@ -37,7 +39,7 @@ const Header = () => {
                   <button onClick={handleLogout}>Sair</button>
                 </li>
                 <li>
-                  <Link to="/post-an-add" className="button">
+                  <Link to="/post-an-ad" className="button">
                     Inserir anúncio
                   </Link>
                 </li>

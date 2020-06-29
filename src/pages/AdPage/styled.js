@@ -66,6 +66,17 @@ export const PageArea = styled.div`
     }
   }
   .rightSide {
+    .priceNegotiable {
+      box-sizing: border-box;
+      display: flex;
+      background-color: rgb(110, 10, 214);
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      padding: 10px 0px 10px 8px;
+      color: #fff;
+      font-size: 30px;
+    }
+
     .price span {
       box-sizing: border-box;
       display: flex;
