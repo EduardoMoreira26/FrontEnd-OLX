@@ -1,7 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import MaskedInput from "react-text-mask";
+import createNumberMask from "text-mask-addons/dist/createNumberMask";
 import { PageArea } from "./styled";
 import useApi from "../../helpers/OlxApi";
-import { doLogin } from "../../helpers/AuthHandler";
 
 import {
   PageContainer,
@@ -11,9 +13,13 @@ import {
 
 const Page = () => {
   const api = useApi();
+  const fileField = useRef();
+  const history = useHistory();
 
   //DECLARAÇÔES USESTATE
-  const fileField = useRef();
+
+  //PEGA LISTA DE CATEGORIAS
+  const [categories, setCategories] = useState([]);
 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -24,23 +30,66 @@ const Page = () => {
   const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    const getCategories = async () => {
+      const cats = await api.getCategories();
+      setCategories(cats);
+    };
+
+    getCategories();
+  }, [api]);
+
   //FUNÇÔES
   const handleSubmit = async (e) => {
     e.preventDefault();
     setDisabled(true);
     setError("");
+    let errors = [];
 
-    // const json = await api.login(email, password);
+    if (!title.trim()) {
+      errors.push("Adicione um título");
+    }
 
-    // if (json.error) {
-    //   setError(json.error);
-    // } else {
-    //   doLogin(json.token, rememberPassword);
-    //   window.location.href = "/";
-    // }
+    if (!category) {
+      errors.push("Selecione uma categoria");
+    }
+
+    if (errors.length === 0) {
+      const fData = new FormData();
+      fData.append("title", title);
+      fData.append("price", price);
+      fData.append("priceneg", priceNegotiable);
+      fData.append("desc", desc);
+      fData.append("cat", category);
+
+      if (fileField.current.files.length > 0) {
+        for (let i = 0; i < fileField.current.files.length; i++) {
+          fData.append("img", fileField.current.files[i]);
+        }
+      }
+
+      const json = await api.addAd(fData);
+
+      if (!json.error) {
+        history.push(`/ad/${json.id}`);
+        return;
+      } else {
+        setError(json.error);
+      }
+    } else {
+      setError(errors.join("\n"));
+    }
 
     setDisabled(false);
   };
+
+  const priceMask = createNumberMask({
+    prefix: "R$",
+    includeThousandsSeparator: true,
+    thousandsSeparatorSymbol: ".",
+    allowDecimal: true,
+    decimalSymbol: ",",
+  });
 
   return (
     <PageContainer>
@@ -76,19 +125,40 @@ const Page = () => {
           <label className="area">
             <div className="area--title">Categorias*</div>
             <div className="area--input">
-              <select name="" id=""></select>
+              <select
+                disabled={disabled}
+                onChange={(e) => setCategory(e.target.value)}
+                required
+              >
+                <option></option>
+                {categories &&
+                  categories.map((i) => (
+                    <option key={i._id} value={i._id}>
+                      {i.name}
+                    </option>
+                  ))}
+              </select>
             </div>
           </label>
 
           <label className="area">
             <div className="area--title">Preço</div>
-            <div className="area--input ">...</div>
+            <div className="area--input ">
+              <MaskedInput
+                mask={priceMask}
+                placeholder="R$"
+                disabled={disabled || priceNegotiable}
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </div>
           </label>
 
           <label className="area">
             <div className="area--title">Preço Negociável</div>
             <div className="area--input ">
               <input
+                className="check-box"
                 type="checkbox"
                 disabled={disabled}
                 checked={priceNegotiable}

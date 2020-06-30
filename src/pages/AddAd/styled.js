@@ -10,7 +10,7 @@ export const PageArea = styled.div`
     .area {
       display: flex;
       align-items: center;
-      padding: 10px;
+      padding: 20px;
       max-width: 500px;
 
       .area--title {
@@ -47,8 +47,12 @@ export const PageArea = styled.div`
           }
         }
 
-        .check {
+        .check-box {
           width: 20px;
+        }
+
+        textarea {
+          height: 120px;
         }
 
         button {
