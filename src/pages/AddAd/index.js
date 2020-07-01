@@ -16,9 +16,6 @@ const Page = () => {
   const fileField = useRef();
   const history = useHistory();
 
-  //DECLARAÇÔES USESTATE
-
-  //PEGA LISTA DE CATEGORIAS
   const [categories, setCategories] = useState([]);
 
   const [title, setTitle] = useState("");
@@ -35,11 +32,9 @@ const Page = () => {
       const cats = await api.getCategories();
       setCategories(cats);
     };
-
     getCategories();
   }, [api]);
 
-  //FUNÇÔES
   const handleSubmit = async (e) => {
     e.preventDefault();
     setDisabled(true);
@@ -47,11 +42,11 @@ const Page = () => {
     let errors = [];
 
     if (!title.trim()) {
-      errors.push("Adicione um título");
+      errors.push("Sem título");
     }
 
     if (!category) {
-      errors.push("Selecione uma categoria");
+      errors.push("Sem categoria");
     }
 
     if (errors.length === 0) {
@@ -84,7 +79,7 @@ const Page = () => {
   };
 
   const priceMask = createNumberMask({
-    prefix: "R$",
+    prefix: "R$ ",
     includeThousandsSeparator: true,
     thousandsSeparatorSymbol: ".",
     allowDecimal: true,
@@ -93,15 +88,15 @@ const Page = () => {
 
   return (
     <PageContainer>
-      <PageTitle>O que você está anunciando?</PageTitle>
+      <PageTitle>Postar um anúncio</PageTitle>
       <PageArea>
         {error && <ErrorMessage>{error}</ErrorMessage>}
 
         <form onSubmit={handleSubmit}>
           <label className="area">
+            <div className="area--title">Titulo</div>
             <div className="area--input">
               <input
-                placeholder="Título*"
                 type="text"
                 disabled={disabled}
                 value={title}
@@ -110,20 +105,8 @@ const Page = () => {
               />
             </div>
           </label>
-
           <label className="area">
-            <div className="area--input ">
-              <textarea
-                placeholder="Descrição*"
-                disabled={disabled}
-                value={desc}
-                onChange={(e) => setDesc(e.target.value)}
-              ></textarea>
-            </div>
-          </label>
-
-          <label className="area">
-            <div className="area--title">Categorias*</div>
+            <div className="area--title">Categoria</div>
             <div className="area--input">
               <select
                 disabled={disabled}
@@ -140,25 +123,22 @@ const Page = () => {
               </select>
             </div>
           </label>
-
           <label className="area">
             <div className="area--title">Preço</div>
-            <div className="area--input ">
+            <div className="area--input">
               <MaskedInput
                 mask={priceMask}
-                placeholder="R$"
+                placeholder="R$ "
                 disabled={disabled || priceNegotiable}
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
           </label>
-
           <label className="area">
             <div className="area--title">Preço Negociável</div>
-            <div className="area--input ">
+            <div className="area--input">
               <input
-                className="check-box"
                 type="checkbox"
                 disabled={disabled}
                 checked={priceNegotiable}
@@ -166,29 +146,26 @@ const Page = () => {
               />
             </div>
           </label>
-
-          <label className="area ">
-            <div className="area-img">
-              <div className="area--title">
-                Fotos <br />
-                Adicione até 20 fotos
-              </div>
-              <div className="area--input ">
-                <input
-                  className="input-img"
-                  type="file"
-                  disabled={disabled}
-                  ref={fileField}
-                  multiple
-                />
-              </div>
+          <label className="area">
+            <div className="area--title">Descrição</div>
+            <div className="area--input">
+              <textarea
+                disabled={disabled}
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+              ></textarea>
             </div>
           </label>
-
+          <label className="area">
+            <div className="area--title">Imagens (1 ou mais)</div>
+            <div className="area--input">
+              <input type="file" disabled={disabled} ref={fileField} multiple />
+            </div>
+          </label>
           <label className="area">
             <div className="area--title"></div>
             <div className="area--input">
-              <button disabled={disabled}>Enviar anúncio</button>
+              <button disabled={disabled}>Adicionar Anúncio</button>
             </div>
           </label>
         </form>

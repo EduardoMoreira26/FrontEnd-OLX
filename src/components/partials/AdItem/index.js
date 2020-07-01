@@ -6,7 +6,7 @@ export default (props) => {
   let price = "";
 
   if (props.data.priceNegotiable) {
-    price = "Preço Negociáel";
+    price = "Preço Negociável";
   } else {
     price = `R$ ${props.data.price}`;
   }

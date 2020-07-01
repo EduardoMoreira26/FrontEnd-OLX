@@ -24,17 +24,13 @@ const apiFetchFile = async (endpoint, body) => {
 
   return json;
 };
-
-//REQUISICAO POST
 const apiFetchPost = async (endpoint, body) => {
-  //se token nao vier na requisição pegar o que tiver no cookie
   if (!body.token) {
     let token = Cookies.get("token");
     if (token) {
       body.token = token;
     }
   }
-
   const res = await fetch(BASEAPI + endpoint, {
     method: "POST",
     headers: {
@@ -52,17 +48,13 @@ const apiFetchPost = async (endpoint, body) => {
 
   return json;
 };
-
-//REQUISICAO GET
 const apiFetchGet = async (endpoint, body = []) => {
-  //se token nao vier na requisição pegar o que tiver no cookie
   if (!body.token) {
     let token = Cookies.get("token");
     if (token) {
       body.token = token;
     }
   }
-
   const res = await fetch(`${BASEAPI + endpoint}?${qs.stringify(body)}`);
   const json = await res.json();
 
@@ -76,7 +68,6 @@ const apiFetchGet = async (endpoint, body = []) => {
 
 const OlxAPI = {
   login: async (email, password) => {
-    // fazer consulta ao WebService
     const json = await apiFetchPost("/user/signin", { email, password });
     return json;
   },
