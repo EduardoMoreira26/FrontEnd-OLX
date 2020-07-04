@@ -125,6 +125,7 @@ const Page = () => {
                 <br />
                 <a
                   href={`mailto:${adInfo.userInfo.email}`}
+                  // eslint-disable-next-line react/jsx-no-target-blank
                   target="_blank"
                   className="contactSellerLink"
                 >
