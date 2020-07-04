@@ -52,7 +52,7 @@ export const PageArea = styled.div`
     }
 
     .categoryItem:hover,
-    .categoryItem:active {
+    .categoryItem.active {
       background-color: #e57706;
       color: #fff;
     }
