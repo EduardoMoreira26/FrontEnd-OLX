@@ -65,6 +65,21 @@ const Page = () => {
         {error && <ErrorMessage>{error}</ErrorMessage>}
 
         <form onSubmit={handleSubmit}>
+
+        <label className="area">
+            <div className="area--title"></div>
+            <div className="area--input">
+              <button className="button-face" disabled={disabled}>Entrar com o Facebook</button>
+            </div>
+          </label>
+
+          <label className="area">
+            <div className="area--title"></div>
+            <div className="area--input">
+              <button className="button-google" disabled={disabled}>Entrar com o Google</button>
+            </div>            
+          </label>
+
           <label className="area">
             <div className="area--title">Nome Completo</div>
             <div className="area--input">
@@ -101,7 +116,6 @@ const Page = () => {
             <div className="area--input">
               <input
                 type="email"
-                placeholder="preencha com seu e-mail"
                 disabled={disabled}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

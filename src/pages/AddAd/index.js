@@ -88,15 +88,16 @@ const Page = () => {
 
   return (
     <PageContainer>
-      <PageTitle>Postar um anúncio</PageTitle>
+      <PageTitle>O que você está anunciando?</PageTitle>
       <PageArea>
         {error && <ErrorMessage>{error}</ErrorMessage>}
 
         <form onSubmit={handleSubmit}>
           <label className="area">
-            <div className="area--title">Titulo</div>
+            <div className="area--title"></div>
             <div className="area--input">
               <input
+                placeholder="Titulo"
                 type="text"
                 disabled={disabled}
                 value={title}
@@ -105,8 +106,22 @@ const Page = () => {
               />
             </div>
           </label>
+
+          <label className="area">
+            <div className="area--title"></div>
+            <div className="area--input">
+              <textarea
+                placeholder="Descrição"
+                disabled={disabled}
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+              ></textarea>
+            </div>
+          </label>
+
           <label className="area">
             <div className="area--title">Categoria</div>
+            
             <div className="area--input">
               <select
                 disabled={disabled}
@@ -126,7 +141,9 @@ const Page = () => {
           <label className="area">
             <div className="area--title">Preço</div>
             <div className="area--input">
+             
               <MaskedInput
+                className="price"
                 mask={priceMask}
                 placeholder="R$ "
                 disabled={disabled || priceNegotiable}
@@ -139,6 +156,7 @@ const Page = () => {
             <div className="area--title">Preço Negociável</div>
             <div className="area--input">
               <input
+                className="check-box"
                 type="checkbox"
                 disabled={disabled}
                 checked={priceNegotiable}
@@ -146,16 +164,7 @@ const Page = () => {
               />
             </div>
           </label>
-          <label className="area">
-            <div className="area--title">Descrição</div>
-            <div className="area--input">
-              <textarea
-                disabled={disabled}
-                value={desc}
-                onChange={(e) => setDesc(e.target.value)}
-              ></textarea>
-            </div>
-          </label>
+          
           <label className="area">
             <div className="area--title">Imagens (1 ou mais)</div>
             <div className="area--input">

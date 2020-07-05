@@ -5,7 +5,7 @@ export const PageArea = styled.div`
     background-color: #fff;
     border-radius: 3px;
     padding: 10px;
-    box-shadow: 0px 1px 3px 0px #999;
+    box-shadow: 0px 0px 1px 0px #111;
 
     .area {
       display: flex;

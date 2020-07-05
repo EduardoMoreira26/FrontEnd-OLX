@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const HeaderArea = styled.div`
+  
+
   background-color: #fff;
   height: 80px;
   border-bottom: 1px solid #ccc;
@@ -20,21 +22,27 @@ export const HeaderArea = styled.div`
     display: flex;
     align-items: center;
     height: 80px;
+    font-weight: bold;
+    font-family: 'Suravaram', serif;
 
     .logo-1,
     .logo-2,
-    .logo-3 {
-      font-size: 27px;
+    .logo-3, 
+    .logo-4 {
+      font-size: 36px;
       font-weight: bold;
     }
     .logo-1 {
-      color: #ff0000;
+      color: #6e0ad6;
     }
     .logo-2 {
-      color: #00ff00;
+      color: #8ce563;
     }
     .logo-3 {
-      color: #0000ff;
+      color: #F28000;
+    }
+    .logo-4 {
+      color: #6e0ad6;
     }
   }
 

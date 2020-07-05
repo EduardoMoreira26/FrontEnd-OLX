@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PageArea } from "./styled"
 
 const Page = () => {
   return (
-    <div>
+    <PageArea>
+      
       <h1>Pagina Não Encontrada</h1>
 
-      <Link to="/">Voltar para a Home</Link>
-    </div>
+      <Link className="back" to="/">Voltar para a Home</Link>
+    </PageArea>
   );
 };
 
