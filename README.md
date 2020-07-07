@@ -11,7 +11,7 @@ Onde foi criado o clone da aplicação OLX, através de uma SPA.
 
 ## :hammer: FUNCIONALIDADES
 
-### Foi utilizado um webservice disponibilizado pela equipe da B7WEB.
+### Foi utilizado uma API disponibilizado pela equipe da B7WEB.
 
 ### Cadastrar / Login
 Neste projeto o usuário pode se cadastrar e fazer login com uma conta já cadastrada. Somente é possível criar um anúncio se o usuário estiver logado e preenchido os campos obrigatórios.
