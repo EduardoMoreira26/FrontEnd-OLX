@@ -1,68 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Projeto clone Olx
 
-## Available Scripts
+Projeto criado com principal objetivo de colocar em prática todo o conhecimento adquirido no curso da plataforma B7WEB, onde 
+foi abordado todos os conceitos da biblioteca React.
+Onde foi criado o clone da aplicação OLX, através de uma SPA.
 
-In the project directory, you can run:
+### Tela inicial
 
-### `yarn start`
+![Tela inicial Olx](https://github.com/EduardoMoreira26/FrontEnd-OLX/blob/master/tela-inicial.png)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## :hammer: FUNCIONALIDADES
 
-### `yarn test`
+### Foi utilizado uma API disponibilizada pela equipe da B7WEB.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Cadastrar / Login
+Neste projeto o usuário pode se cadastrar e fazer login com uma conta já cadastrada. Somente é possível criar um anúncio se o usuário estiver logado e preenchido os campos obrigatórios.
 
-### `yarn build`
+![Tela Login Cadastro](https://github.com/EduardoMoreira26/FrontEnd-OLX/blob/master/tela-cadastroLogin.jpg)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Cadastrar anúncio
+Após estar logado o usário tem a opção de criar um novo anúncio. 
+Preenchendo os campos obrigátorios como Título do anúncio, descrição, preço ou preço negociável e selecionando uma ou mais imagens do produto.
+Clicando em adicionar anúncio, a página é redirecionada para o mesmo.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Tela Cadastrar Anúncio](https://github.com/EduardoMoreira26/FrontEnd-OLX/blob/master/tela-cadastrarAd.png)
 
-### `yarn eject`
+### Página do anúncio
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Tela do Anúncio](https://github.com/EduardoMoreira26/FrontEnd-OLX/blob/master/tela-produto.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Filtrar anúncios
+Os anúncios podem ser filtrados pelo nome do que procura, estado e categorias. Podendo utilizar tambám mais de um filtro.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Tela filtrar Anúncios](https://github.com/EduardoMoreira26/FrontEnd-OLX/blob/master/tela-filtroResultados.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## :computer: TECNOLOGIAS
 
-## Learn More
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [ReactJs](https://reactjs.org/)
+* [yarn](https://yarnpkg.com/)
+* [Css Flexbox](https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_Flexible_Box_Layout/Conceitos_Basicos_do_Flexbox)
+* [styled-components](https://styled-components.com/)
+* [Hooks](https://reactjs.org/docs/hooks-intro.htmll) 
+* [feathericons](https://feathericons.com/)
+* [React slideshow image](https://reactjsexample.com/tag/slides/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## :watch: RODANDO A APLICAÇÃO
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: [Git](https://git-scm.com/). 
+Além disto é bom ter um editor para trabalhar com o código como [Visual Studio Code](https://code.visualstudio.com/)
 
-### Code Splitting
+```
+# Clone este repositório
+$ git clone https://github.com/EduardoMoreira26/FrontEnd-OLX.git
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd frontend
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+# Instale as dependências
+$ npm install 
 
-### Making a Progressive Web App
+# Execute a aplicação em modo de desenvolvimento
+$ npm run start
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
+```
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Eduardo Moreira.
