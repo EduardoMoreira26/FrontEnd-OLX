@@ -18,6 +18,7 @@ const Page = () => {
   const [password, setPassword] = useState("");
 
   const [stateList, setStateList] = useState([]);
+  const [listToken, setListToken] = useState([]);
 
   useEffect(()=>{
     const getStates = async () => {
@@ -28,6 +29,15 @@ const Page = () => {
     getStates();
   }, [api])
   
+  //FUNCAO  TRAZER DADOS USUARIO e anuncios
+  useEffect(()=> {
+    const getToken = async () => {
+      const list = await api.getToken();
+      setListToken(list);
+    };
+
+    getToken()
+  }, [api]); 
 
 
   return (
@@ -41,6 +51,7 @@ const Page = () => {
             <div className="area--title">Nome</div>
               <div className="area--input">
                 <input 
+                placeholder={listToken.name}
                 type="text"
                 value={name}
                 onChange={(e)=>setName(e.target.value)}
@@ -52,6 +63,7 @@ const Page = () => {
               <div className="area--title">E-mail</div>
                 <div className="area--input">
                   <input 
+                  placeholder={listToken.email}
                   type="email"
                   value={email}
                   onChange={(e)=>setEmail(e.target.value)}
@@ -81,6 +93,7 @@ const Page = () => {
               <div className="area--title">Senha</div>
                 <div className="area--input">
                   <input 
+                  placeholder={listToken.password}
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

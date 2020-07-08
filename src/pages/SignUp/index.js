@@ -34,6 +34,7 @@ const Page = () => {
     getStates();
   }, [api]);
 
+
   //FUNÇÔES
   const handleSubmit = async (e) => {
     e.preventDefault();

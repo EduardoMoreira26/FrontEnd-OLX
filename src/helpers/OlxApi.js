@@ -106,6 +106,12 @@ const OlxAPI = {
     const json = await apiFetchFile("/ad/add", fData);
     return json;
   },
+
+  getToken: async () => {
+    
+    const json = await apiFetchGet("/user/me");
+    return json;
+  }
 };
 
 export default () => OlxAPI;
