@@ -23,7 +23,7 @@ export const SearchArea = styled.div`
         border-radius: 5px;
         outline: 0;
         font-size: 15px;
-        color: ##4a5055;
+        color: #4a5055;
         margin-right: 20px;
         font-size: 18px;
       }
@@ -42,7 +42,7 @@ export const SearchArea = styled.div`
         font-size: 20px;
         border: 0;
         border-radius: 2px;
-        color: ##4a5055;
+        color: #4a5055;
         height: 40px;
         padding: 0 20px;
         cursor: pointer;
@@ -73,9 +73,36 @@ export const SearchArea = styled.div`
       }
     }
   }
+
+  @media (max-width:600px) {
+
+    .searchBox form {
+      flex-direction:column;
+      
+
+      input {
+        padding:20px;
+        margin:10px auto;
+        border:1px solid #ddd;
+      
+      }
+
+      select {
+        width:50%;
+        margin:10px auto;
+        border:1px solid #ddd;
+        
+      }
+    }
+
+    .categoryList .categoryItem {
+      width:50%;
+    }
+  }
 `;
 
 export const PageArea = styled.div`
+
   h2 {
     font-size: 20px;
   }
@@ -93,6 +120,18 @@ export const PageArea = styled.div`
     display: inline-block;
     margin: 10px 0;
   }
+  @media (max-width:600px) {
+    h2 {
+      margin:10px;
+    }
+    .list .aditem {
+      width:50%;
+    }
+
+    .seeAllLink{
+      margin:10px;
+    }
+  }
 `;
 
 export const AreaGalery = styled.div`
@@ -108,6 +147,15 @@ export const AreaGalery = styled.div`
 
     .aditem {
       width: 20%;
+    }
+  }
+
+  @media (max-width:600px) {
+    h2 {
+      margin:10px;
+    }
+    .list .aditem {
+      width:50%;
     }
   }
 `;

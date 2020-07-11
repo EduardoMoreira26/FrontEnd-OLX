@@ -24,6 +24,8 @@ const apiFetchFile = async (endpoint, body) => {
 
   return json;
 };
+
+//REQUISICAO POST Ad
 const apiFetchPost = async (endpoint, body) => {
   if (!body.token) {
     let token = Cookies.get("token");
@@ -48,6 +50,9 @@ const apiFetchPost = async (endpoint, body) => {
 
   return json;
 };
+
+
+//REQUISICAO
 const apiFetchGet = async (endpoint, body = []) => {
   if (!body.token) {
     let token = Cookies.get("token");
@@ -65,6 +70,33 @@ const apiFetchGet = async (endpoint, body = []) => {
 
   return json;
 };
+
+//REQUISICAO PUT
+const apiFetchPut = async (endpoint, body) => {
+  if (!body.token) {
+    let token = Cookies.get("token");
+    if (token) {
+      body.token = token;
+    }
+  }
+  const res = await fetch(BASEAPI + endpoint, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  const json = await res.json();
+
+  if (json.notallowed) {
+    window.location.href = "/";
+    return;
+  }
+
+  return json;
+};
+
 
 const OlxAPI = {
   login: async (email, password) => {
@@ -107,11 +139,21 @@ const OlxAPI = {
     return json;
   },
 
+  //BUSCAR DADOS DO USUARIO CADASTRADO
   getToken: async () => {
     
     const json = await apiFetchGet("/user/me");
     return json;
-  }
+  },
+
+  unRegister: async () => {
+    
+    const json = await apiFetchPut("/user/me");
+    return json;
+  },
+
+
+
 };
 
 export default () => OlxAPI;

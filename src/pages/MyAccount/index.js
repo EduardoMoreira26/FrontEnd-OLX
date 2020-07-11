@@ -6,7 +6,9 @@ import useApi from "../../helpers/OlxApi";
 import {
   PageContainer,
   PageTitle,
+  ErrorMessage,
 } from "../../components/MainComponents";
+
 
 const Page = () => {
   const api = useApi();
@@ -14,11 +16,15 @@ const Page = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [state, setState] = useState("");
+  const [stateLoc, setStateLoc] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const [stateList, setStateList] = useState([]);
   const [listToken, setListToken] = useState([]);
+
+  const [disabled, setDisabled] = useState(false);
+
 
   useEffect(()=>{
     const getStates = async () => {
@@ -29,7 +35,7 @@ const Page = () => {
     getStates();
   }, [api])
   
-  //FUNCAO  TRAZER DADOS USUARIO e anuncios
+  //FUNCAO  TRAZER DADOS USUARIO E ANUNCIOS
   useEffect(()=> {
     const getToken = async () => {
       const list = await api.getToken();
@@ -39,6 +45,20 @@ const Page = () => {
     getToken()
   }, [api]); 
 
+  //FUNCAO  MUDAR DADOS USUARIO
+  const handleSubmit = async () => {
+      const unRegister = async () => {
+        const list = await api.unRegister();
+        setListToken(list);
+      };
+  
+      unRegister();
+    } 
+  
+ 
+
+
+
 
   return (
     <>
@@ -46,11 +66,13 @@ const Page = () => {
 
       <PageTitle>Minha conta</PageTitle>
       <PageArea>
-        <form  >
+
+        <form onSubmit={handleSubmit} >
           <label className="area">
             <div className="area--title">Nome</div>
               <div className="area--input">
                 <input 
+                disabled={disabled}
                 placeholder={listToken.name}
                 type="text"
                 value={name}
@@ -63,6 +85,7 @@ const Page = () => {
               <div className="area--title">E-mail</div>
                 <div className="area--input">
                   <input 
+                  disabled={disabled}
                   placeholder={listToken.email}
                   type="email"
                   value={email}
@@ -75,8 +98,8 @@ const Page = () => {
               <div className="area--title">Estado</div>
                 <div className="area--input">
                  <select
-                  value={state}
-                  onChange={(e)=>setState(e.target.value)}
+                  value={stateLoc}
+                  onChange={(e)=>setStateLoc(e.target.value)}
                  >
                    <option></option>
                    {stateList.map((i, k) => (
@@ -93,6 +116,7 @@ const Page = () => {
               <div className="area--title">Senha</div>
                 <div className="area--input">
                   <input 
+                  disabled={disabled}
                   placeholder={listToken.password}
                   type="password"
                   value={password}
